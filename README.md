@@ -10,6 +10,12 @@ mouse wheel to change size of point
 * middle button to draw red
 * right click to draw black
 
+press f11 for full screen.
+
+press 1 to clear screen blue
+press 2 to clear screen red 
+press 3 to clear screen black
+
 makes alot of pressure on brain of eyes.
 
 eyes basically say i feel stupid give me a break but you keep practice.
