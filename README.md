@@ -8,8 +8,10 @@ press f11 for full screen.
 
 use mouse to paint
 
-cool things to paing are intersecting lines and intersecting lines of different colors and an interesting figure. all these enable the ye to find and lock on position.
-like on black. draw a blue smilely. make it a spider by adding horizontal lines on sides of it. then add two vertical red lines on sides.
+cool things to paing are intersecting lines and intersecting lines of different colors and an interesting figure. all these enable the ye to find and lock on position. to challange eyes draw (maybe with smaller size) blue on red or with red on blue
+on black background.
+
+for example on black background draw a blue smilely. make it a spider by adding horizontal lines on sides of it. then add two vertical red lines on sides. 
 
 mouse wheel to change size of point
 
