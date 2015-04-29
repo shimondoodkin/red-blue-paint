@@ -1,5 +1,7 @@
 # red-blue-paint
 
+https://rawgit.com/shimondoodkin/red-blue-paint/master/redbluepaint.html
+
 lets practice painting eyesight with mouse and (anaglyph) red and blue glasses
 
 use mouse to paint
