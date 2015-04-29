@@ -41,4 +41,5 @@ but usually not trained to see well because looking at computer long time.
 eyes usually can focus given some time but they vlur to connect both eyes emades beter so they dont focus.
 all it needs just show brain good information.
 
-eyes should be relaxed instead for this to work. tension in muscles bends the picture.
+eyes should be relaxed instead of squinting for this to work. tension in muscles bends the picture.
+i have noticed maybe squint little on sides out sides of eyes instead of centers but not sure about it this might turn abad idea can't predict.
