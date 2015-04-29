@@ -14,7 +14,7 @@ eyes basically say i feel stupid give me a break but you keep practice.
 for more like this search:
 
 * dichoptic taining
-* there are also dichoptic tetris
+* dichoptic tetris
 
 dichoptic eyesight taining is the latest reseach in eyesight.
 after first practice of 15 minutes i got an effect of 1 to 2 dioptre eyesight enhancment.
