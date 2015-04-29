@@ -38,3 +38,5 @@ it is posible because eyes if not desease are usually ok
 but usually not trained to see well because looking at computer long time.
 eyes usually can focus given some time but they vlur to connect both eyes emades beter so they dont focus.
 all it needs just show brain good information.
+
+eyes should be relaxed instead for this to work. tension in muscles bends the picture.
