@@ -26,3 +26,7 @@ after first practice of 15 minutes i got an effect of 1 to 2 dioptre eyesight en
 it is said in several places the more training the more the effect. lots of practice makes the effect permanent
 
 
+it is posible because eyes if not desease are usually ok
+but usually not trained to see well because looking at computer long time.
+eyes usually can focus given some time but they vlur to connect both eyes emades beter so they dont focus.
+all it needs jsut show brain good information.
