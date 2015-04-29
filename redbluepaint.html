@@ -1,7 +1,8 @@
+
 <html><head>
     <script type="text/javascript">
 //<![CDATA[
-try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"3317032c875417d9047c9d8ada38f9a5",petok:"39377f54d64164efa4e72d642f3f9f80932304e4-1430344662-1800",zone:"doodkin.com",rocket:"0",apps:{}}];CloudFlare.push({"apps":{"ape":"0e1eea5e3cae32541c1a4572e10ef08f"}});!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=7e13c32551/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"3317032c875417d9047c9d8ada38f9a5",petok:"103c215380a0aed8e965fe9e0dfdcb7a1f67564d-1430347943-1800",zone:"doodkin.com",rocket:"0",apps:{}}];CloudFlare.push({"apps":{"ape":"46e3dd38c11df913cde882703ed7919c"}});!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=7e13c32551/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
 //]]>
 </script>
 <style type="text/css">
@@ -94,10 +95,11 @@ mie=true
 			lastcursory=mouse.y;
 			canvas.addEventListener('mousemove', onPaint, false);
 			onPaint();
+
 			return false;
 	}, false);
 
-	canvas.addEventListener('mousemove', DrawCursor, false);
+	//canvas.addEventListener('mousemove', DrawCursor, false);
 
         window.addEventListener('resize', function() {
         	var sketch_style = getComputedStyle(sketch);
@@ -126,13 +128,24 @@ var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mo
    //else if (document.addEventListener) //WC3 browsers
     document.addEventListener(mousewheelevt, displaywheel, false)
 
-  window.addEventListener('keyup', function() {
-                var sketch_style = getComputedStyle(sketch);
-                canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-                canvas.height = parseInt(sketch_style.getPropertyValue('height'));
-                ctx.fillStyle = 'black';
+  window.addEventListener('keyup', function(e) {
+		if(e.keyCode==51)         { color = 'black'; cursorcolor='red'}
+		else if(e.keyCode==50)     {    	color = 'red'; cursorcolor='blue'}
+		else if(e.keyCode==49)     {   	color = 'blue'; cursorcolor='red'}
+		else return true;
+		 ctx.fillStyle = color
+                //var sketch_style = getComputedStyle(sketch);
+                //canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+                //canvas.height = parseInt(sketch_style.getPropertyValue('height'));
                 ctx.fillRect(0,0,canvas.width,canvas.height);
+		 if(e.keyCode==51)         { color = 'blue'; cursorcolor='red'}
 		imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+
+   canvas.removeEventListener('mousemove', DrawCursor, false);   
+   canvas.addEventListener('mousemove', DrawCursor, false);
+   DrawCursor();
+
+		return false;
         }, false);
 
 
@@ -165,8 +178,7 @@ var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mo
 	//	ctx.restore();
 
 	};
-   
-  
+
   	var DrawCursor = function() {
 		ctx.putImageData(imgData,0,0);
 	        ctx.beginPath();
@@ -174,6 +186,10 @@ var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mo
 	        ctx.fillStyle = cursorcolor;
 	        ctx.fill();
 	};
+   canvas.removeEventListener('mousemove', DrawCursor, false);   
+   canvas.addEventListener('mousemove', DrawCursor, false);
+   DrawCursor();
+
 	
 }());
 </script>
