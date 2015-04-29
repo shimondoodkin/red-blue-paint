@@ -8,7 +8,8 @@ press f11 for full screen.
 
 use mouse to paint
 
-cool things to paing are axis or tables on interesting pictures of oposite color.
+cool things to paing are intersecting lines and intersecting lines of different colors and an interesting figure. all these enable the ye to find and lock on position.
+like on black. draw a blue smilely. make it a spider by adding horizontal lines on sides of it. then add two vertical red lines on sides.
 
 mouse wheel to change size of point
 
