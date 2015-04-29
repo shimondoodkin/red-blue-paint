@@ -1,8 +1,9 @@
 # red-blue-paint
 
-https://rawgit.com/shimondoodkin/red-blue-paint/master/redbluepaint.html
-
 lets practice painting eyesight with mouse and (anaglyph) red and blue glasses
+
+use: https://cdn.rawgit.com/shimondoodkin/red-blue-paint/master/redbluepaint.html
+press f11 for full screen.
 
 use mouse to paint
 
@@ -11,8 +12,6 @@ mouse wheel to change size of point
 * left click to draw blue
 * middle button to draw red
 * right click to draw black
-
-press f11 for full screen.
 
 press 1 to clear screen blue
 press 2 to clear screen red 
@@ -37,4 +36,4 @@ it is said in several places the more training the more the effect. lots of prac
 it is posible because eyes if not desease are usually ok
 but usually not trained to see well because looking at computer long time.
 eyes usually can focus given some time but they vlur to connect both eyes emades beter so they dont focus.
-all it needs jsut show brain good information.
+all it needs just show brain good information.
