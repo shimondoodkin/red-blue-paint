@@ -1,0 +1,180 @@
+<html><head>
+    <script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"3317032c875417d9047c9d8ada38f9a5",petok:"39377f54d64164efa4e72d642f3f9f80932304e4-1430344662-1800",zone:"doodkin.com",rocket:"0",apps:{}}];CloudFlare.push({"apps":{"ape":"0e1eea5e3cae32541c1a4572e10ef08f"}});!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=7e13c32551/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]>
+</script>
+<style type="text/css">
+
+html, body {
+	margin:0px;padding:0px;
+	width: 100%;
+	height: 100%;
+}
+
+#sketch {
+	/*border: 0px solid gray;*/
+	height: 100%;
+	position: relative;
+}
+
+#tmp_canvas {
+	position: absolute;
+	left: 0px; right: 0;
+	bottom: 0; top: 0;
+	cursor: crosshair;
+}
+
+
+</style>
+</head>
+<body oncontextmenu="return false">
+<div id="sketch">
+	<canvas id="paint"></canvas>
+</div>
+<![if !IE]>
+<script>
+mie=true
+</script>
+<![endif]>
+<script>
+(function() {
+	var canvas = document.querySelector('#paint');
+	var ctx = canvas.getContext('2d');
+	
+	var sketch = document.querySelector('#sketch');
+	var sketch_style = getComputedStyle(sketch);
+	canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+	canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+        ctx.fillStyle = 'black';
+	ctx.fillRect(0,0,canvas.width,canvas.height);
+
+	var mouse = {x: 0, y: 0};
+	var  imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+	 
+	/* Mouse Capturing Work */
+	canvas.addEventListener('mousemove', function(e) {
+		mouse.x = e.pageX - this.offsetLeft;
+		mouse.y = e.pageY - this.offsetTop;
+	}, false);
+	
+	/* Drawing on Paint App */
+	ctx.lineWidth = 100;
+	ctx.lineJoin = 'round';
+	ctx.lineCap = 'round';
+	var color='blue'
+	var cursorcolor='red'
+	ctx.strokeStyle = color;
+	var radius=50;
+	var lastcursorx=0,lastcursory=0;
+
+	var Left_button = mie?1:0,
+	Middle_button = mie?4:1,
+	Right_button = 2;
+
+	canvas.addEventListener('mousedown', function(e) {
+			if (!e) var e = window.event;
+			var rightclick=false;
+			if (e.which) rightclick = (e.which == 3);
+			if (e.button) rightclick = (e.button == 2);
+
+			var midclick=false;
+			if (e.which) midclick = (e.which == 2);
+			if (e.button) midclick = (e.button == mie?4:1);
+
+			canvas.removeEventListener('mousemove', DrawCursor, false);
+			if(rightclick)	    {color='black';}
+			else if(midclick)   {color='red'; cursorcolor='blue'}
+			else		    {color='blue';cursorcolor='red';}
+
+			ctx.putImageData(imgData,0,0);
+			ctx.beginPath();
+			ctx.moveTo(mouse.x, mouse.y);
+			lastcursorx=mouse.x;
+			lastcursory=mouse.y;
+			canvas.addEventListener('mousemove', onPaint, false);
+			onPaint();
+			return false;
+	}, false);
+
+	canvas.addEventListener('mousemove', DrawCursor, false);
+
+        window.addEventListener('resize', function() {
+        	var sketch_style = getComputedStyle(sketch);
+	        canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+        	canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+	        ctx.fillStyle = 'black';
+	        ctx.fillRect(0,0,canvas.width,canvas.height);
+        }, false);
+
+function displaywheel(e){
+    var evt=window.event || e //equalize event object
+    var delta=evt.detail? evt.detail*(-120) : evt.wheelDelta //check for detail first so Opera uses that instead of wheelDelta
+    ///document.getElementById("wheelvalue").innerHTML=delta //delta returns +120 when wheel is scrolled up, -120 when down
+if(delta>0)
+ radius++;
+else 
+ radius--;
+
+    return false;
+}
+ 
+var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+ 
+ //  if (document.attachEvent) //if IE (and Opera depending on user setting)
+   // document.attachEvent("on"+mousewheelevt, displaywheel)
+   //else if (document.addEventListener) //WC3 browsers
+    document.addEventListener(mousewheelevt, displaywheel, false)
+
+  window.addEventListener('keyup', function() {
+                var sketch_style = getComputedStyle(sketch);
+                canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+                canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+		imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+        }, false);
+
+
+	canvas.addEventListener('mouseup', function() {
+		  ctx.beginPath();
+                ctx.arc(lastcursorx,  lastcursory, radius+1, 0, 2 * Math.PI, false);
+                ctx.fillStyle = color;
+                ctx.fill();
+
+		imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+		canvas.removeEventListener('mousemove', onPaint, false);
+		canvas.addEventListener('mousemove', DrawCursor, false);
+		return false;
+	}, false);
+	 
+	var onPaint = function() {
+                ctx.beginPath();
+                ctx.arc(lastcursorx,  lastcursory, radius+1, 0, 2 * Math.PI, false);
+                ctx.fillStyle = color;
+	        ctx.fill();
+        	lastcursorx=mouse.x;
+                lastcursory=mouse.y;
+
+
+//		ctx.save();
+               ctx.beginPath();
+                ctx.arc(mouse.x,  mouse.y, radius, 0, 2 * Math.PI, false);
+                ctx.fillStyle = cursorcolor;
+                ctx.fill();
+	//	ctx.restore();
+
+	};
+   
+  
+  	var DrawCursor = function() {
+		ctx.putImageData(imgData,0,0);
+	        ctx.beginPath();
+	        ctx.arc(mouse.x,  mouse.y, radius, 0, 2 * Math.PI, false);
+	        ctx.fillStyle = cursorcolor;
+	        ctx.fill();
+	};
+	
+}());
+</script>
+</body></html>
