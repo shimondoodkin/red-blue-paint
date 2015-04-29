@@ -2,7 +2,7 @@
 
 lets practice painting eyesight with regular computer, mouse and anaglyph (red and blue) 3d glasses
 
-use: https://cdn.rawgit.com/shimondoodkin/red-blue-paint/master/redbluepaint.html
+use: http://bit.ly/redbluepaint
 
 press f11 for full screen.
 
