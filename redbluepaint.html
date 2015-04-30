@@ -48,7 +48,7 @@ function avoidInvalidKeyStorkes(evtArg) {
 	var element = (document.all ? window.event.srcElement : evtArg.target);
 	//var msg = "We have disabled this key: " + KEYCODE;
 	
-	if (KEYCODE == 112||EYCODE == 112) {
+	if (KEYCODE == 112||EYCODE == 113||EYCODE == 114) {
 		if (isIE) {
 			document.onhelp = function() {
 				return (false);
@@ -78,7 +78,7 @@ function avoidInvalidKeyStorkes(evtArg) {
 	canvas.removeEventListener('mousemove', DrawCursor, false);   
 	canvas.addEventListener('mousemove', DrawCursor, false);
 	DrawCursor();
-        //return false;
+        return false;
     //window.status = "Done";    
 }    
 
