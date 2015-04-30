@@ -138,7 +138,7 @@ var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mo
 		
 		return false;
         }, false);*/
-  window.addEventListener('keypress', function(e) {
+  window.addEventListener('keydown', function(e) {
 		if(e.keyCode==51||e.keyCode==112)         { color = 'black'; cursorcolor='red'}
 		else if(e.keyCode==50||e.keyCode==113)     {    	color = 'red'; cursorcolor='blue'}
 		else if(e.keyCode==49||e.keyCode==114)     {   	color = 'blue'; cursorcolor='red'}
