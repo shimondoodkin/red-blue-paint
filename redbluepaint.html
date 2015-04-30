@@ -11,7 +11,7 @@ html, body {
 	margin:0px;padding:0px;
 	width: 100%;
 	height: 100%;
-}
+} 
 
 #sketch {
 	/*border: 0px solid gray;*/
@@ -48,7 +48,7 @@ function avoidInvalidKeyStorkes(evtArg) {
 	var element = (document.all ? window.event.srcElement : evtArg.target);
 	//var msg = "We have disabled this key: " + KEYCODE;
 	
-	if (KEYCODE == 112||EYCODE == 113||EYCODE == 114) {
+	if (KEYCODE == 112||KEYCODE == 113||KEYCODE == 114) {
 		if (isIE) {
 			document.onhelp = function() {
 				return (false);
