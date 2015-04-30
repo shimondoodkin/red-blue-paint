@@ -40,7 +40,9 @@ mie=true
 </script>
 <![endif]>
 <script>
-function avoidInvalidKeyStorkes(evtArg) {
+(function() {
+	
+	function avoidInvalidKeyStorkes(evtArg) {
 	var evt = (document.all ? window.event : evtArg);
 	var isIE = (document.all ? true : false);
 	var KEYCODE = parseInt(""+(document.all ? window.event.keyCode : evtArg.which));
@@ -88,12 +90,6 @@ if (window.document.addEventListener) {
     window.document.attachEvent("onkeydown", avoidInvalidKeyStorkes);
     document.captureEvents(Event.KEYDOWN);
 }
-
-</script>
-<script>
-(function() {
-	
-	
 	
 	var canvas = document.querySelector('#paint');
 	var ctx = canvas.getContext('2d');
