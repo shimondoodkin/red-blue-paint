@@ -39,8 +39,47 @@ html, body {
 mie=true
 </script>
 <![endif]>
+function avoidInvalidKeyStorkes(evtArg) {
+    var evt = (document.all ? window.event : evtArg);
+    var isIE = (document.all ? true : false);
+    var KEYCODE = (document.all ? window.event.keyCode : evtArg.which);
+
+    var element = (document.all ? window.event.srcElement : evtArg.target);
+    var msg = "We have disabled this key: " + KEYCODE;
+
+    if (KEYCODE == "112") {
+        if (isIE) {
+            document.onhelp = function() {
+                return (false);
+            };
+            window.onhelp = function() {
+                return (false);
+            };
+        }
+        evt.returnValue = false;
+        evt.keyCode = 0;
+        window.status = msg;
+        evt.preventDefault();
+        evt.stopPropagation();
+        alert(msg);
+    }
+
+    window.status = "Done";    
+}    
+
+if (window.document.addEventListener) {
+    window.document.addEventListener("keydown", avoidInvalidKeyStorkes, false);
+} else {
+    window.document.attachEvent("onkeydown", avoidInvalidKeyStorkes);
+    document.captureEvents(Event.KEYDOWN);
+}
+
+</script>
 <script>
 (function() {
+	
+	
+	
 	var canvas = document.querySelector('#paint');
 	var ctx = canvas.getContext('2d');
 	
