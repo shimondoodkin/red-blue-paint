@@ -108,6 +108,8 @@ mie=true
         	canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 	        ctx.fillStyle = 'black';
 	        ctx.fillRect(0,0,canvas.width,canvas.height);
+	        ctx.putImageData(imgData,0,0);
+	        imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
         }, false);
 
 function displaywheel(e){
@@ -129,15 +131,25 @@ var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mo
    //else if (document.addEventListener) //WC3 browsers
     document.addEventListener(mousewheelevt, displaywheel, false)
 
-/*
+
   window.addEventListener('keypress', function(e) {
-		if(e.keyCode==51||e.keyCode==112)         { color = 'black'; cursorcolor='red'}
-		else if(e.keyCode==50||e.keyCode==113)     {    	color = 'red'; cursorcolor='blue'}
-		else if(e.keyCode==49||e.keyCode==114)     {   	color = 'blue'; cursorcolor='red'}
+		if(e.keyCode==51||e.keyCode==112)          {}
+		else if(e.keyCode==50||e.keyCode==113)     {}
+		else if(e.keyCode==49||e.keyCode==114)     {}
 		else return true;
 		
 		return false;
-        }, false);*/
+        }, false);
+        
+  window.addEventListener('keyup', function(e) {
+		if(e.keyCode==51||e.keyCode==112)          {}
+		else if(e.keyCode==50||e.keyCode==113)     {}
+		else if(e.keyCode==49||e.keyCode==114)     {}
+		else return true;
+		
+		return false;
+        }, false);
+        
   window.addEventListener('keydown', function(e) {
 		if(e.keyCode==51||e.keyCode==112)         { color = 'black'; cursorcolor='red'}
 		else if(e.keyCode==50||e.keyCode==113)     {    	color = 'red'; cursorcolor='blue'}
