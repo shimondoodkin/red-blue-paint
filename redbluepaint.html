@@ -41,31 +41,46 @@ mie=true
 <![endif]>
 <script>
 function avoidInvalidKeyStorkes(evtArg) {
-    var evt = (document.all ? window.event : evtArg);
-    var isIE = (document.all ? true : false);
-    var KEYCODE = (document.all ? window.event.keyCode : evtArg.which);
-
-    var element = (document.all ? window.event.srcElement : evtArg.target);
-    var msg = "We have disabled this key: " + KEYCODE;
-
-    if (KEYCODE == "112") {
-        if (isIE) {
-            document.onhelp = function() {
-                return (false);
-            };
-            window.onhelp = function() {
-                return (false);
-            };
-        }
-        evt.returnValue = false;
-        evt.keyCode = 0;
-        window.status = msg;
-        evt.preventDefault();
-        evt.stopPropagation();
-        alert(msg);
-    }
-
-    window.status = "Done";    
+	var evt = (document.all ? window.event : evtArg);
+	var isIE = (document.all ? true : false);
+	var KEYCODE = (document.all ? window.event.keyCode : evtArg.which);
+	
+	var element = (document.all ? window.event.srcElement : evtArg.target);
+	//var msg = "We have disabled this key: " + KEYCODE;
+	
+	if (KEYCODE == "112") {
+		if (isIE) {
+			document.onhelp = function() {
+				return (false);
+			};
+			window.onhelp = function() {
+				return (false);
+			};
+		}
+		evt.returnValue = false;
+		evt.keyCode = 0;
+		//window.status = msg;
+		evt.preventDefault();
+		evt.stopPropagation();
+		//alert(msg);
+	}
+    	if(KEYCODE==51||KEYCODE==112)          { color = 'black'; cursorcolor='red'}
+	else if(KEYCODE==50||KEYCODE==113)     {    	color = 'red'; cursorcolor='blue'}
+	else if(KEYCODE==49||KEYCODE==114)     {   	color = 'blue'; cursorcolor='red'}
+	else return true;
+	ctx.fillStyle = color
+	//var sketch_style = getComputedStyle(sketch);
+	//canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+	//canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+	ctx.fillRect(0,0,canvas.width,canvas.height);
+	if(KEYCODE==51||KEYCODE==112)          { color = 'blue'; cursorcolor='red'}
+	imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+	
+	canvas.removeEventListener('mousemove', DrawCursor, false);   
+	canvas.addEventListener('mousemove', DrawCursor, false);
+	DrawCursor();
+        return false;
+    //window.status = "Done";    
 }    
 
 if (window.document.addEventListener) {
@@ -172,43 +187,6 @@ var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mo
     document.addEventListener(mousewheelevt, displaywheel, false)
 
 
-  window.addEventListener('keypress', function(e) {
-		if(e.keyCode==51||e.keyCode==112)          {}
-		else if(e.keyCode==50||e.keyCode==113)     {}
-		else if(e.keyCode==49||e.keyCode==114)     {}
-		else return true;
-		
-		return false;
-        }, false);
-        
-  window.addEventListener('keyup', function(e) {
-		if(e.keyCode==51||e.keyCode==112)          {}
-		else if(e.keyCode==50||e.keyCode==113)     {}
-		else if(e.keyCode==49||e.keyCode==114)     {}
-		else return true;
-		
-		return false;
-        }, false);
-        
-  window.addEventListener('keydown', function(e) {
-		if(e.keyCode==51||e.keyCode==112)         { color = 'black'; cursorcolor='red'}
-		else if(e.keyCode==50||e.keyCode==113)     {    	color = 'red'; cursorcolor='blue'}
-		else if(e.keyCode==49||e.keyCode==114)     {   	color = 'blue'; cursorcolor='red'}
-		else return true;
-		 ctx.fillStyle = color
-                //var sketch_style = getComputedStyle(sketch);
-                //canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-                //canvas.height = parseInt(sketch_style.getPropertyValue('height'));
-                ctx.fillRect(0,0,canvas.width,canvas.height);
-		 if(e.keyCode==51)         { color = 'blue'; cursorcolor='red'}
-		imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
-
-   canvas.removeEventListener('mousemove', DrawCursor, false);   
-   canvas.addEventListener('mousemove', DrawCursor, false);
-   DrawCursor();
-
-		return false;
-        }, false);
 
 
 	canvas.addEventListener('mouseup', function() {
